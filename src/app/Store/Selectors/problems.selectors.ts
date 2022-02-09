@@ -7,8 +7,8 @@ import {
 } from '../Reducers/problems.reducers';
 
 export const getMoviesState = createFeatureSelector<
-problemsPartialState,
-problemsState
+  problemsPartialState,
+  problemsState
 >(PROBLEMS_FEATURE_KEY);
 
 export const selectLoggedUser = createSelector(
@@ -21,3 +21,7 @@ export const selectFailedLogin = createSelector(
   (state: problemsState) => state.userFailedLogin
 );
 
+export const selectSuccessfulLogin = createSelector(
+  getMoviesState,
+  (state: problemsState) => state.userSuccessfulLogin
+);

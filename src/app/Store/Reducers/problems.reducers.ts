@@ -7,6 +7,7 @@ export interface problemsState {
   problemsList: any[];
   user: null;
   userFailedLogin: boolean;
+  userSuccessfulLogin: boolean;
 }
 
 export interface problemsPartialState {
@@ -17,6 +18,7 @@ export const initialState: problemsState = {
   problemsList: [],
   user: null,
   userFailedLogin: false,
+  userSuccessfulLogin: false,
 };
 
 const _problemsReducer = createReducer(
@@ -26,6 +28,7 @@ const _problemsReducer = createReducer(
       ...state,
       user: userObject,
       userFailedLogin: false,
+      userSuccessfulLogin: true,
     };
   }),
   on(ProblemActions.getProfileInfoFailure, (state) => {
