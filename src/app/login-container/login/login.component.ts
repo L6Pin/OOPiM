@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
   constructor(private facade: problemsFacade) {}
 
   loginForm!: FormGroup;
-  public failedLogin$!: Observable<any>;
+  readonly failedLogin$: Observable<any>  = this.facade.failedLogin$;
 
   loginUser() {
     this.facade.dispatchLoggedUser(this.loginForm.value);
@@ -23,7 +23,5 @@ export class LoginComponent implements OnInit {
       email: new FormControl(''),
       password: new FormControl(''),
     });
-
-    this.failedLogin$ = this.facade.failedLogin$;
   }
 }

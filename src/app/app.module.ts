@@ -8,11 +8,10 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { ProfileContainerComponent } from './profile-container/profile-container.component';
-import { ProfileComponent } from './profile-container/profile/profile.component';
 import { problemsFacade } from './Store/Facade/problems.facade';
-import { EffectsModule } from '@ngrx/effects';
-import { ProblemsEffects } from './Store/Effects/problems.effects';
 import { problemsReducer } from './Store/Reducers/problems.reducers';
+
+
 
 
 @NgModule({
@@ -20,7 +19,6 @@ import { problemsReducer } from './Store/Reducers/problems.reducers';
     AppComponent,
     HeaderComponent,
     ProfileContainerComponent,
-    ProfileComponent,
   ],
   imports: [
     BrowserModule,
