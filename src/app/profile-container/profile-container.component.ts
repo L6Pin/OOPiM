@@ -16,6 +16,7 @@ export class ProfileContainerComponent implements OnInit {
   ngOnInit(): void {
     this.userObject$.subscribe((user) => {
       if (user.is_admin) this.router.navigate(['profile/admin']);
+      if (user.is_worker) this.router.navigate(['/profile/worker']);
     });
   }
 }
