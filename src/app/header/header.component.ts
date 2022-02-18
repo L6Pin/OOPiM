@@ -10,9 +10,7 @@ import { problemsFacade } from '../Store/Facade/problems.facade';
 export class HeaderComponent implements OnInit {
   constructor(private facade: problemsFacade) {}
 
-  public userSuccessfulLogin$!: Observable<boolean>;
+  readonly userSuccessfulLogin$: Observable<boolean> = this.facade.successfulLogin$;
 
-  ngOnInit(): void {
-    this.userSuccessfulLogin$ = this.facade.successfulLogin$;
-  }
+  ngOnInit(): void {}
 }
