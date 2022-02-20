@@ -1,0 +1,13 @@
+<ng-container
+  *ngIf="{
+    successfulLogin: userSuccessfulLogin$ | async
+  } as vm"
+>
+  <mat-toolbar class="header" color="primary">
+    <p>Prijava kvarova</p>
+    <p style="color: red" *ngIf="vm.successfulLogin">Odjava</p>
+  </mat-toolbar>
+  <div class="router-container">
+    <router-outlet></router-outlet>
+  </div>
+</ng-container>

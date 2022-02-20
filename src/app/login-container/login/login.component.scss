@@ -1,18 +1,22 @@
-.login-form {
-  width: 350px;
-  border: 1px solid rgb(211, 211, 211);
-  border-radius: 10px;
-  padding: 20px;
+.form{
+  border: 1px solid rgb(165, 165, 165);
+  padding: 30px;
+  border-radius: 5px;
+  text-align: center;
 
-  .form-group {
+  .login-title{
+    font-weight: bold;
+    font-size: 24px;
     margin-bottom: 10px;
-  }
-
-  .btn {
-    margin-top: 10px;
+    display: block;
   }
 }
 
-.alert {
-  margin-top: 15px;
+.alert{
+  background-color: #F44336;
+  color: white;
+  text-align: center;
+  margin-top: 10px;
+  padding: 5px;
+  border-radius: 5px;
 }

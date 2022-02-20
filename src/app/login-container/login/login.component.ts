@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
   constructor(private facade: problemsFacade) {}
 
   loginForm!: FormGroup;
-  readonly failedLogin$: Observable<any>  = this.facade.failedLogin$;
+  readonly failedLogin$: Observable<any> = this.facade.failedLogin$;
 
   loginUser() {
     this.facade.dispatchLoggedUser(this.loginForm.value);

@@ -11,6 +11,7 @@ import { problemsReducer } from '../Store/Reducers/problems.reducers';
 import { problemsFacade } from '../Store/Facade/problems.facade';
 import { EffectsModule } from '@ngrx/effects';
 import { ProblemsEffects } from '../Store/Effects/problems.effects';
+import { MaterialModule } from '../material-module.module';
 
 @NgModule({
   declarations: [LoginContainerComponent, LoginComponent],
@@ -19,7 +20,8 @@ import { ProblemsEffects } from '../Store/Effects/problems.effects';
     LoginRoutingModule,
     StoreModule.forFeature('problems', problemsReducer),
     EffectsModule.forRoot([ProblemsEffects]),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MaterialModule
   ],
   providers: [problemsFacade],
 })

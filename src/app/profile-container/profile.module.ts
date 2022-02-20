@@ -5,12 +5,10 @@ import { ProfileRoutingModule } from './profile-routing.module';
 import { AdminComponent } from './admin/admin.component';
 import { StaffComponent } from './staff/staff.component';
 import { WorkerComponent } from './worker/worker.component';
-import { problemsFacade } from '../Store/Facade/problems.facade';
-import { Observable } from 'rxjs';
-import { Router } from '@angular/router';
+import { MaterialModule } from '../material-module.module';
 
 @NgModule({
   declarations: [AdminComponent, StaffComponent, WorkerComponent],
-  imports: [CommonModule, ProfileRoutingModule],
+  imports: [CommonModule, ProfileRoutingModule, MaterialModule],
 })
 export class ProfileModule {}
