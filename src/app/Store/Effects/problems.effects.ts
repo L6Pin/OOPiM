@@ -2,7 +2,13 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { ApiService } from '../../api.service';
 import { Injectable } from '@angular/core';
 import * as ProblemActions from '../Actions/problems.actions';
-import { catchError, concatMap, map, switchMap } from 'rxjs/operators';
+import {
+  catchError,
+  concatMap,
+  map,
+  mergeMap,
+  switchMap,
+} from 'rxjs/operators';
 import { of } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -28,4 +34,31 @@ export class ProblemsEffects {
       )
     )
   );
+
+  getPopularMovies = createEffect(() =>
+    this.actions.pipe(
+      ofType(ProblemActions.getAllProblems),
+      switchMap(() =>
+        this.api.getAllProblems().pipe(
+          map((problems) =>
+            ProblemActions.getAllProblemsSuccess({ allProblems: problems })
+          )
+        )
+      )
+    )
+  );
+
+  // getAllProblems = createEffect(() =>
+  //   this.actions.pipe(
+  //     ofType(ProblemActions.getAllProblems),
+  //     mergeMap(() =>
+  //       this.api.getAllProblems().pipe(
+  //         map((allProblems) => {
+  //           return ProblemActions.getAllProblemsSuccess({ allProblems: allProblems });
+  //         }),
+  //         catchError(() => of(ProblemActions.getAllProblemsFailure()))
+  //       )
+  //     )
+  //   )
+  // );
 }

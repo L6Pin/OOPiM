@@ -36,6 +36,12 @@ const _problemsReducer = createReducer(
       ...state,
       userFailedLogin: true,
     };
+  }),
+  on(ProblemActions.getAllProblemsSuccess, (state, { allProblems }) => {
+    return {
+      ...state,
+      problemsList: allProblems,
+    };
   })
 );
 

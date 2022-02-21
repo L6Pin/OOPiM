@@ -9,9 +9,16 @@ export class problemsFacade {
 
   loggedUser$ = this.store.pipe(select(problemSelectors.selectLoggedUser));
   failedLogin$ = this.store.pipe(select(problemSelectors.selectFailedLogin));
-  successfulLogin$ = this.store.pipe(select(problemSelectors.selectSuccessfulLogin));
+  successfulLogin$ = this.store.pipe(
+    select(problemSelectors.selectSuccessfulLogin)
+  );
+  allProblems$ = this.store.pipe(select(problemSelectors.selectAllProblems));
 
   public dispatchLoggedUser(userObjectfromForm: any) {
     this.store.dispatch(problemActions.getProfileInfo(userObjectfromForm));
+  }
+
+  public dispatchAllProblems() {
+    this.store.dispatch(problemActions.getAllProblems());
   }
 }

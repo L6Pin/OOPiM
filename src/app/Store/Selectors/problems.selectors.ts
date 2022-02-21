@@ -25,3 +25,8 @@ export const selectSuccessfulLogin = createSelector(
   getMoviesState,
   (state: problemsState) => state.userSuccessfulLogin
 );
+
+export const selectAllProblems = createSelector(
+  getMoviesState,
+  (state: problemsState) => state.problemsList
+)

@@ -13,4 +13,10 @@ export class ApiService {
       account
     );
   }
+
+  getAllProblems() {
+    return this.api.get(
+      'https://prijava-kvarova-v2.azurewebsites.net/api/problems'
+    );
+  }
 }
