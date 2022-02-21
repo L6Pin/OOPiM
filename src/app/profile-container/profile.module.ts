@@ -6,9 +6,11 @@ import { AdminComponent } from './admin/admin.component';
 import { StaffComponent } from './staff/staff.component';
 import { WorkerComponent } from './worker/worker.component';
 import { MaterialModule } from '../material-module.module';
+import { ProblemsTableComponent } from './problems-table/problems-table.component';
+import { ProfileContainerComponent } from './profile-container.component';
 
 @NgModule({
-  declarations: [AdminComponent, StaffComponent, WorkerComponent],
+  declarations: [AdminComponent, StaffComponent, WorkerComponent, ProblemsTableComponent, ProfileContainerComponent],
   imports: [CommonModule, ProfileRoutingModule, MaterialModule],
 })
 export class ProfileModule {}

@@ -1,0 +1,17 @@
+.table-container {
+  padding: 16px;
+
+  .search-and-add {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  table {
+    width: 100%;
+
+    th {
+      font-weight: bold;
+    }
+  }
+}
