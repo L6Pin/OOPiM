@@ -8,10 +8,9 @@ import { problemsFacade } from 'src/app/Store/Facade/problems.facade';
 @Component({
   selector: 'app-problems-table',
   templateUrl: './problems-table.component.html',
-  styleUrls: ['./problems-table.component.scss']
+  styleUrls: ['./problems-table.component.scss'],
 })
 export class ProblemsTableComponent implements OnInit {
-
   public problemsList: Observable<any> = this.facade.allProblems$;
   public ELEMENT_DATA: any[] = [];
   displayedColumns: string[] = ['id', 'problem_name', 'room', 'status_name'];
@@ -21,13 +20,13 @@ export class ProblemsTableComponent implements OnInit {
 
   constructor(private facade: problemsFacade) {}
 
-  ngOnInit(): void {}
-
-  ngAfterViewInit() {
+  ngOnInit(): void {
     this.problemsList.subscribe((problems) => {
       this.dataSource.data = problems;
-      console.log(problems);
     });
+  }
+
+  ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }

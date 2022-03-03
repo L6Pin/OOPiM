@@ -8,9 +8,10 @@ import { WorkerComponent } from './worker/worker.component';
 import { MaterialModule } from '../material-module.module';
 import { ProblemsTableComponent } from './problems-table/problems-table.component';
 import { ProfileContainerComponent } from './profile-container.component';
+import { SupplierComponent } from './supplier/supplier.component';
 
 @NgModule({
-  declarations: [AdminComponent, StaffComponent, WorkerComponent, ProblemsTableComponent, ProfileContainerComponent],
+  declarations: [AdminComponent, StaffComponent, WorkerComponent, ProblemsTableComponent, ProfileContainerComponent, SupplierComponent],
   imports: [CommonModule, ProfileRoutingModule, MaterialModule],
 })
 export class ProfileModule {}

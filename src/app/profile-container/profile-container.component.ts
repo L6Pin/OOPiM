@@ -17,8 +17,8 @@ export class ProfileContainerComponent implements OnInit {
     this.userObject$.subscribe((user) => {
       if (user.is_admin) this.router.navigate(['profile/admin']);
       if (user.is_worker) this.router.navigate(['/profile/worker']);
-      //is_manager - change to is_staff when backend changes are made
-      if (user.is_manager) this.router.navigate(['/profile/staff']);
+      if (user.is_staff) this.router.navigate(['/profile/staff']);
+      if(user.is_supplier) this.router.navigate(['/profile/supplier'])
     });
   }
 }

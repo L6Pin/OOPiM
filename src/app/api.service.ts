@@ -19,4 +19,42 @@ export class ApiService {
       'https://prijava-kvarova-v2.azurewebsites.net/api/problems'
     );
   }
+
+  getStaffProblems(user: any) {
+    console.log(user)
+    return this.api.get(
+      `https://prijava-kvarova-v2.azurewebsites.net/api/problems/staff?staffId=${user.id}`
+    );
+  }
+
+  getWorkerProblems(user: any) {
+    return this.api.get(
+      `https://prijava-kvarova-v2.azurewebsites.net/api/problems/worker?workerId=8`
+    );
+  }
+
+  addProblem(addProblemObject: any) {
+    return this.api.post(
+      `https://prijava-kvarova-v2.azurewebsites.net/api/problems`,
+      addProblemObject
+    );
+  }
+
+  getSupplierProblems() {
+    return this.api.get(
+      'https://prijava-kvarova-v2.azurewebsites.net/api/problems/worker'
+    );
+  }
+
+  getSingleProblem(id: any) {
+    return this.api.get(
+      `https://prijava-kvarova-v2.azurewebsites.net/api/problems/${id}`
+    );
+  }
+
+  deleteSingleProblem(id: any) {
+    return this.api.delete(
+      `https://prijava-kvarova-v2.azurewebsites.net/api/problems/${id}`
+    );
+  }
 }

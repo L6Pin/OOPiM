@@ -4,6 +4,7 @@ import { AdminComponent } from './admin/admin.component';
 import { ProfileContainerComponent } from './profile-container.component';
 import { StaffComponent } from './staff/staff.component';
 import { WorkerComponent } from './worker/worker.component';
+import { SupplierComponent } from './supplier/supplier.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: "staff",
     component: StaffComponent
+  },
+  {
+    path: "supplier",
+    component: SupplierComponent
   }
 ];
 

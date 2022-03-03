@@ -21,4 +21,17 @@ export class problemsFacade {
   public dispatchAllProblems() {
     this.store.dispatch(problemActions.getAllProblems());
   }
+
+  public dispatchAddProblem(problemObj: any) {
+    this.store.dispatch(problemActions.addProblem(problemObj));
+  }
+
+  public dispatchWorkerProblems(workerId: any) {
+    this.store.dispatch(problemActions.getWorkerProblems(workerId));
+  }
+
+  public dispatchStaffProblems(workerId: any) {
+    console.log(workerId)
+    this.store.dispatch(problemActions.getStaffProblemsSuccess(workerId));
+  }
 }

@@ -1,24 +1,31 @@
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { ApiService } from '../../api.service';
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import * as ProblemActions from '../Actions/problems.actions';
 import {
   catchError,
   concatMap,
+  filter,
   map,
   mergeMap,
   switchMap,
 } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
+import { problemsFacade } from '../Facade/problems.facade';
 
 @Injectable()
 export class ProblemsEffects {
   constructor(
     private actions: Actions,
     private api: ApiService,
-    private router: Router
+    private router: Router,
+    private facade: problemsFacade
   ) {}
+
+  $user: Observable<any> = this.facade.loggedUser$;
+  userRole: any;
+  userId: any;
 
   getProfileInfo = createEffect(() =>
     this.actions.pipe(
@@ -39,26 +46,68 @@ export class ProblemsEffects {
     this.actions.pipe(
       ofType(ProblemActions.getAllProblems),
       switchMap(() =>
-        this.api.getAllProblems().pipe(
+        this.api
+          .getAllProblems()
+          .pipe(
+            map((problems) =>
+              ProblemActions.getAllProblemsSuccess({ allProblems: problems })
+            )
+          )
+      )
+    )
+  );
+
+
+  
+  getStaffProblems = createEffect(() =>
+  this.actions.pipe(
+    ofType(ProblemActions.getStaffProblems),
+    switchMap((user) =>
+      this.api.getStaffProblems(user).pipe(
+        map((problems) =>
+          ProblemActions.getStaffProblemsSuccess({
+            staffProblems: problems,
+          })
+        )
+      )
+    )
+  )
+);
+
+  getWorkerProblems = createEffect(() =>
+    this.actions.pipe(
+      ofType(ProblemActions.getWorkerProblems),
+      switchMap((user) =>
+        this.api.getWorkerProblems(user).pipe(
           map((problems) =>
-            ProblemActions.getAllProblemsSuccess({ allProblems: problems })
+            ProblemActions.getWorkerProblemsSuccess({
+              workerProblems: problems,
+            })
           )
         )
       )
     )
   );
 
-  // getAllProblems = createEffect(() =>
-  //   this.actions.pipe(
-  //     ofType(ProblemActions.getAllProblems),
-  //     mergeMap(() =>
-  //       this.api.getAllProblems().pipe(
-  //         map((allProblems) => {
-  //           return ProblemActions.getAllProblemsSuccess({ allProblems: allProblems });
-  //         }),
-  //         catchError(() => of(ProblemActions.getAllProblemsFailure()))
-  //       )
-  //     )
-  //   )
-  // );
+
+
+
+  addProblem = createEffect(() =>
+    this.actions.pipe(
+      ofType(ProblemActions.addProblem),
+      concatMap((formObj) =>
+        this.api.addProblem(formObj).pipe(
+          map(() => {
+            this.$user.subscribe((user) => {
+              if (user.is_admin) this.userRole = 'admin';
+              if (user.is_worker) this.userRole = 'worker';
+            });
+            this.router.navigate([`/profile/${this.userRole}`]);
+            return ProblemActions.addProblemSuccess();
+          }),
+          catchError(() => of(ProblemActions.getProfileInfoFailure()))
+        )
+      )
+    )
+  );
 }

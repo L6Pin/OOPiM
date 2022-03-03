@@ -1,20 +1,20 @@
-.header{
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  p{
+  p {
     margin: 0;
   }
 }
 
-.router-container{
+.router-container {
   height: calc(100vh - 64px);
   overflow-y: auto;
 }
 
-@media(min-width: 768){
-  .router-container{
+@media (min-width: 768) {
+  .router-container {
     height: calc(100vh - 72px);
   }
 }

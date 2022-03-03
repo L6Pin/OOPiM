@@ -42,6 +42,19 @@ const _problemsReducer = createReducer(
       ...state,
       problemsList: allProblems,
     };
+  }),
+  on(ProblemActions.getWorkerProblemsSuccess, (state, { workerProblems }) => {
+    return {
+      ...state,
+      problemsList: workerProblems,
+    };
+  }),
+  on(ProblemActions.getStaffProblemsSuccess, (state, { staffProblems }) => {
+    console.log(staffProblems)
+    return {
+      ...state,
+      problemsList: staffProblems,
+    };
   })
 );
 

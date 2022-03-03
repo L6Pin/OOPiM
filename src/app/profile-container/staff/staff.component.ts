@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { problemsFacade } from 'src/app/Store/Facade/problems.facade';
 
 @Component({
   selector: 'app-staff',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StaffComponent implements OnInit {
 
-  constructor() { }
+  constructor(private facade: problemsFacade) {}
+
+  private worker: Observable<any> = this.facade.loggedUser$;
 
   ngOnInit(): void {
+    this.worker.subscribe((user) => {
+      console.log(user)
+      this.facade.dispatchStaffProblems(user);
+    });
   }
 
 }

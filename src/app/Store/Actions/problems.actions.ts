@@ -26,3 +26,35 @@ export const getAllProblemsSuccess = createAction(
 export const getAllProblemsFailure = createAction(
   '[Admin component] getAllProblemsFailure'
 );
+
+//Get worker problems
+export const getWorkerProblems = createAction(
+  '[Worker component] getWorkerProblems',
+  props<{ workerId: any }>()
+);
+
+export const getWorkerProblemsSuccess = createAction(
+  '[Worker component] getWorkerProblemsSuccess',
+  props<{ workerProblems: any }>()
+);
+
+//Get staff problems
+export const getStaffProblems = createAction(
+  '[Staff component] getStaffProblems',
+  props<{ staffId: any }>()
+)
+
+export const getStaffProblemsSuccess = createAction(
+  '[Worker component] getStaffProblemsSuccess',
+  props<{ staffProblems: any }>()
+);
+
+//Add problem
+export const addProblem = createAction(
+  '[Add problem component] addProblem',
+  props<{ addProblemObj: any }>()
+);
+
+export const addProblemSuccess = createAction(
+  '[Add problem component] addProblemSuccess'
+);
