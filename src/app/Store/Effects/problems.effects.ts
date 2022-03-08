@@ -57,23 +57,6 @@ export class ProblemsEffects {
     )
   );
 
-
-  
-  getStaffProblems = createEffect(() =>
-  this.actions.pipe(
-    ofType(ProblemActions.getStaffProblems),
-    switchMap((user) =>
-      this.api.getStaffProblems(user).pipe(
-        map((problems) =>
-          ProblemActions.getStaffProblemsSuccess({
-            staffProblems: problems,
-          })
-        )
-      )
-    )
-  )
-);
-
   getWorkerProblems = createEffect(() =>
     this.actions.pipe(
       ofType(ProblemActions.getWorkerProblems),
@@ -89,7 +72,35 @@ export class ProblemsEffects {
     )
   );
 
+  getStaffProblems = createEffect(() =>
+  this.actions.pipe(
+    ofType(ProblemActions.getStaffProblems),
+    switchMap((user) =>
+      this.api.getStaffProblems(user).pipe(
+        map((problems) =>
+          ProblemActions.geStaffProblemsSuccess({
+           staffProblems: problems,
+          })
+        )
+      )
+    )
+  )
+);
 
+getSupplierProblems = createEffect(() =>
+this.actions.pipe(
+  ofType(ProblemActions.getSupplierProblems),
+  switchMap((user) =>
+    this.api.getSupplierProblems(user).pipe(
+      map((problems) =>
+        ProblemActions.getSupplierProblemsSuccess({
+          supplierProblems: problems,
+        })
+      )
+    )
+  )
+)
+);
 
 
   addProblem = createEffect(() =>

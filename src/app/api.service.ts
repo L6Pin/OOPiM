@@ -29,7 +29,7 @@ export class ApiService {
 
   getWorkerProblems(user: any) {
     return this.api.get(
-      `https://prijava-kvarova-v2.azurewebsites.net/api/problems/worker?workerId=8`
+      `https://prijava-kvarova-v2.azurewebsites.net/api/problems/worker?workerId=${user.id}`
     );
   }
 
@@ -40,9 +40,9 @@ export class ApiService {
     );
   }
 
-  getSupplierProblems() {
+  getSupplierProblems(user: any) {
     return this.api.get(
-      'https://prijava-kvarova-v2.azurewebsites.net/api/problems/worker'
+      `https://prijava-kvarova-v2.azurewebsites.net/api/problems/supplier?supplierId=${user.id}`
     );
   }
 

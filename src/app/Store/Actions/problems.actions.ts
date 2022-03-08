@@ -38,17 +38,6 @@ export const getWorkerProblemsSuccess = createAction(
   props<{ workerProblems: any }>()
 );
 
-//Get staff problems
-export const getStaffProblems = createAction(
-  '[Staff component] getStaffProblems',
-  props<{ staffId: any }>()
-)
-
-export const getStaffProblemsSuccess = createAction(
-  '[Worker component] getStaffProblemsSuccess',
-  props<{ staffProblems: any }>()
-);
-
 //Add problem
 export const addProblem = createAction(
   '[Add problem component] addProblem',
@@ -57,4 +46,26 @@ export const addProblem = createAction(
 
 export const addProblemSuccess = createAction(
   '[Add problem component] addProblemSuccess'
+);
+
+//Staff problems
+export const getStaffProblems = createAction(
+  '[Staff component] getStaffProblems',
+  props<{ staffId: any }>()
+);
+
+export const geStaffProblemsSuccess = createAction(
+  '[Staff component] geStaffProblemsSuccess',
+  props<{ staffProblems: any }>()
+);
+
+//Supplier problems
+export const getSupplierProblems = createAction(
+  '[Supplier component] getSupplierProblems',
+  props<{ supplierId: any }>()
+);
+
+export const getSupplierProblemsSuccess = createAction(
+  '[Supplier component] geSupplierProblemsSuccess',
+  props<{ supplierProblems: any }>()
 );

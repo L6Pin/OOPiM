@@ -30,8 +30,12 @@ export class problemsFacade {
     this.store.dispatch(problemActions.getWorkerProblems(workerId));
   }
 
-  public dispatchStaffProblems(workerId: any) {
-    console.log(workerId)
-    this.store.dispatch(problemActions.getStaffProblemsSuccess(workerId));
+  public dispatchStaffProblems(id: any) {
+    this.store.dispatch(problemActions.getStaffProblems(id));
   }
+
+  public dispatchSupplierProblems(id: any) {
+    this.store.dispatch(problemActions.getSupplierProblems(id));
+  }
+
 }
