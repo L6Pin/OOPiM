@@ -18,7 +18,11 @@ export class ProblemsTableComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
+ 
+
   constructor(private facade: problemsFacade) {}
+
+  readonly user$: Observable<any> = this.facade.loggedUser$
 
   ngOnInit(): void {
     this.problemsList.subscribe((problems) => {

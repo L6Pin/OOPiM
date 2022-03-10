@@ -8,17 +8,19 @@
         (keyup)="applyFilter($any($event.target).value)"
       />
     </mat-form-field>
-    <a routerLink="/problem/add"><button mat-raised-button color="primary">Prijavi</button></a>
+
+    <a routerLink="/problem/add" *ngIf="(user$ | async)?.is_staff"><button mat-raised-button color="primary">Prijavi</button></a>
+
   </div>
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource" matSort>
-      <!-- Position Column -->
+     
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
         <td mat-cell *matCellDef="let element">{{ element.id }}</td>
       </ng-container>
 
-      <!-- Name Column -->
+      
       <ng-container matColumnDef="problem_name">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Problem</th>
         <td mat-cell *matCellDef="let element">
@@ -26,13 +28,13 @@
         </td>
       </ng-container>
 
-      <!-- Weight Column -->
+      
       <ng-container matColumnDef="room">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Prostorija</th>
         <td mat-cell *matCellDef="let element">{{ element.room }}</td>
       </ng-container>
 
-      <!-- Symbol Column -->
+     
       <ng-container matColumnDef="status_name">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
         <td mat-cell *matCellDef="let element">{{ element.status_name }}</td>
