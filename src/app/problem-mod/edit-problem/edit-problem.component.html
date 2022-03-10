@@ -1,37 +1,43 @@
-<div class="form-container">
-  <form [formGroup]="editForm">
-    <h2>Izmena problema</h2>
-    <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>Problem</mat-label>
-      <input matInput formControlName="problem_name"/>
-    </mat-form-field>
-  
-    <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>Opis</mat-label>
-      <textarea matInput  formControlName="description"></textarea>
-    </mat-form-field>
-  
-    <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>Prostorija</mat-label>
-      <input matInput formControlName="room"/>
-    </mat-form-field>
-  
-    <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>Komentar</mat-label>
-      <textarea matInput formControlName="comment"></textarea>
-    </mat-form-field>
-    <hr>
-    <mat-form-field appearance="fill">
-      <mat-label>Status</mat-label>
-      <select matNativeControl required formControlName="status_id">
-        <option value="1">Prijavljen</option>
-        <option value="2">U toku</option>
-        <option value="3">Nabavka materijala</option>
-        <option value="4">Nabavljeno</option>
-        <option value="5">Popravljanje</option>
-      </select>
-    </mat-form-field>
-  
-    <button mat-raised-button color="primary">Prijavi problem</button>
-  </form>
-</div>
+<ng-container *ngIf="{
+  user:  user$ | async
+} as vm">
+  <div class="form-container">
+    <form [formGroup]="editForm">
+      <h2>Izmena problema</h2>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Problem</mat-label>
+        <input matInput formControlName="problem_name"/>
+      </mat-form-field>
+    
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Opis</mat-label>
+        <textarea matInput  formControlName="description"></textarea>
+      </mat-form-field>
+    
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Prostorija</mat-label>
+        <input matInput formControlName="room"/>
+      </mat-form-field>
+    
+      <mat-form-field class="example-full-width" appearance="fill" *ngIf="vm.user.is_worker">
+        <mat-label>Komentar</mat-label>
+        <textarea matInput formControlName="comment"></textarea>
+      </mat-form-field>
+      <hr>
+      <mat-form-field appearance="fill">
+        <mat-label>Status</mat-label>
+        <select matNativeControl required formControlName="status_id">
+          <option value="2"*ngIf="vm.user.is_admin">U toku</option>
+          
+          <option value="3" *ngIf="vm.user.is_worker">Nabavka materijala</option>
+
+          <option value="4" *ngIf="vm.user.is_supplier">Nabavljen materijal</option>
+
+          <option value="5" *ngIf="vm.user.is_worker">Popravljeno</option>
+        </select>
+      </mat-form-field>
+      <button mat-raised-button color="primary">Prijavi problem</button>
+    </form>
+  </div>
+
+</ng-container>

@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { tap } from 'rxjs/operators';
 import { ApiService } from 'src/app/api.service';
 import { FormControl, FormGroup } from '@angular/forms';
+import { problemsFacade } from 'src/app/Store/Facade/problems.facade';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-edit-problem',
@@ -13,11 +15,13 @@ export class EditProblemComponent implements OnInit {
   constructor(
     private api: ApiService,
     private route: ActivatedRoute,
+    private facade: problemsFacade
     
   ) {}
 
   editForm!: FormGroup
   problemData: any
+  readonly user$: Observable<any> = this.facade.loggedUser$
 
   ngOnInit(): void {
 
