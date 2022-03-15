@@ -110,8 +110,7 @@ this.actions.pipe(
         this.api.addProblem(formObj).pipe(
           map(() => {
             this.$user.subscribe((user) => {
-              if (user.is_admin) this.userRole = 'admin';
-              if (user.is_worker) this.userRole = 'worker';
+              if (user.is_staff) this.userRole = 'staff';            
             });
             this.router.navigate([`/profile/${this.userRole}`]);
             return ProblemActions.addProblemSuccess();

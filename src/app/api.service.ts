@@ -21,7 +21,7 @@ export class ApiService {
   }
 
   getStaffProblems(user: any) {
-    console.log(user)
+    console.log(user);
     return this.api.get(
       `https://prijava-kvarova-v2.azurewebsites.net/api/problems/staff?staffId=${user.id}`
     );
@@ -55,6 +55,13 @@ export class ApiService {
   deleteSingleProblem(id: any) {
     return this.api.delete(
       `https://prijava-kvarova-v2.azurewebsites.net/api/problems/${id}`
+    );
+  }
+
+  patchSingleProblem(problemObj: any) {
+    return this.api.put(
+      'https://prijava-kvarova-v2.azurewebsites.net/api/problems',
+      problemObj
     );
   }
 }

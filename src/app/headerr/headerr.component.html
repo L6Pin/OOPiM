@@ -5,7 +5,7 @@
 >
   <mat-toolbar class="header" color="primary">
     <p>Prijava kvarova</p>
-    <p style="color: red" *ngIf="vm.successfulLogin">Odjava</p>
+    <p style="color: red" *ngIf="vm.successfulLogin" (click)="logOut()">Odjava</p>
   </mat-toolbar>
   <div class="router-container">
     <router-outlet></router-outlet>

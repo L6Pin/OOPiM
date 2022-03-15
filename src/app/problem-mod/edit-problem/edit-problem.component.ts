@@ -22,10 +22,9 @@ export class EditProblemComponent implements OnInit {
   editForm!: FormGroup
   problemData: any
   readonly user$: Observable<any> = this.facade.loggedUser$
-
-  ngOnInit(): void {
-
     
+  
+  ngOnInit(): void {    
     this.editForm = new FormGroup({
       problem_name: new FormControl(""),
       description: new FormControl(""),
@@ -33,7 +32,6 @@ export class EditProblemComponent implements OnInit {
       comment: new FormControl(""),
       status_id: new FormControl(""),
     });
-
 
     this.api
       .getSingleProblem(this.route.snapshot.params.id)
@@ -46,10 +44,28 @@ export class EditProblemComponent implements OnInit {
           status_id: res.status_id
         })
       })
+  }
 
-
-      console.log(this.problemData)
-
+  editProblem(){
+    this.api.patchSingleProblem({
+      id: Number(this.route.snapshot.params.id),
+      ...this.editForm.value, 
+      status_id: Number(this.editForm.value.status_id),
+      category_id: 1,
+      priority_id: 1,
+      supplier_id: 4,
+      worker_id: 3,
+      staff_id: 8
+    }).subscribe(res => console.log({
+      id: Number(this.route.snapshot.params.id),
+      ...this.editForm.value, 
+      status_id: Number(this.editForm.value.status_id),
+      category_id: 1,
+      priority_id: 1,
+      supplier_id: 4,
+      worker_id: 3,
+      staff_id: 8
+    }))
   }
 }
 
