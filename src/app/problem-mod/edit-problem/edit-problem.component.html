@@ -2,7 +2,7 @@
   user:  user$ | async
 } as vm">
   <div class="form-container">
-    <form [formGroup]="editForm" (ngSubmit)="editProblem()">
+    <form [formGroup]="editForm" (ngSubmit)="editProblem(vm.user)">
       <h2>Izmena problema</h2>
       <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Problem</mat-label>
@@ -28,7 +28,7 @@
         <mat-label>Status</mat-label>
         <select matNativeControl required formControlName="status_id">
           <option value="2"*ngIf="vm.user.is_admin">U toku</option>
-          
+
           <option value="4" *ngIf="vm.user.is_worker">Nabavka materijala</option>
 
           <option value="5" *ngIf="vm.user.is_supplier">Nabavljen materijal</option>
