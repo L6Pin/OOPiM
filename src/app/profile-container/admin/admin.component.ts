@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { problemsFacade } from 'src/app/Store/Facade/problems.facade';
 
 @Component({
@@ -9,7 +10,13 @@ import { problemsFacade } from 'src/app/Store/Facade/problems.facade';
 export class AdminComponent implements OnInit {
   constructor(private facade: problemsFacade) {}
 
+  private worker: Observable<any> = this.facade.loggedUser$;
+
+
   ngOnInit(): void {
-    this.facade.dispatchAllProblems();
+    this.worker.subscribe((user) => {
+      console.log(user)
+      if(user.is_admin) this.facade.dispatchAllProblems();
+    });
   }
 }

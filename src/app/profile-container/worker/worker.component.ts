@@ -14,7 +14,7 @@ export class WorkerComponent implements OnInit {
 
   ngOnInit(): void {
     this.worker.subscribe((user) => {
-      this.facade.dispatchWorkerProblems(user);
+      if (user.is_worker) this.facade.dispatchWorkerProblems(user);
     });
   }
 }

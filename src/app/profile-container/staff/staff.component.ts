@@ -15,8 +15,7 @@ export class StaffComponent implements OnInit {
 
   ngOnInit(): void {
     this.worker.subscribe((user) => {
-      console.log(user)
-      this.facade.dispatchStaffProblems(user)
+      if (user.is_staff) this.facade.dispatchStaffProblems(user)
     });
   }
 

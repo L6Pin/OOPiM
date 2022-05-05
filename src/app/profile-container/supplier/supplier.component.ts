@@ -16,8 +16,7 @@ export class SupplierComponent implements OnInit {
 
   ngOnInit(): void {
     this.supplier.subscribe((user) => {
-      console.log(user)
-      this.facade.dispatchSupplierProblems(user)
+      if(user.is_supplier) this.facade.dispatchSupplierProblems(user)
     });
   }
 
