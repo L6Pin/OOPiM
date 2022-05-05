@@ -69,3 +69,8 @@ export const getSupplierProblemsSuccess = createAction(
   '[Supplier component] geSupplierProblemsSuccess',
   props<{ supplierProblems: any }>()
 );
+
+//Clear state on logout
+export const clearStateOnLogout = createAction(
+  '[Header component] clearStateOnLogout'
+);

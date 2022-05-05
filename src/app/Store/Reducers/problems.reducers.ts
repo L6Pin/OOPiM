@@ -37,6 +37,12 @@ const _problemsReducer = createReducer(
       userFailedLogin: true,
     };
   }),
+  on(ProblemActions.clearStateOnLogout, (state) => {
+    return {
+      ...state,
+      problemsList: [],
+    };
+  }),
   on(ProblemActions.getAllProblemsSuccess, (state, { allProblems }) => {
     return {
       ...state,

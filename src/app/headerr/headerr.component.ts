@@ -17,6 +17,7 @@ export class HeaderrComponent {
 
     logOut(){
       this.router.navigate([`/`])
+      this.facade.clearStateOnLogout()
     }
     
 }

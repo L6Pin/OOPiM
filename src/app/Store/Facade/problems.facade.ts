@@ -22,6 +22,10 @@ export class problemsFacade {
     this.store.dispatch(problemActions.getAllProblems());
   }
 
+  public clearStateOnLogout(){
+    this.store.dispatch(problemActions.clearStateOnLogout());
+  }
+
   public dispatchAddProblem(problemObj: any) {
     this.store.dispatch(problemActions.addProblem(problemObj));
   }
